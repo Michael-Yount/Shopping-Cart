@@ -1,10 +1,10 @@
 // simulate getting products from DataBase
-const products = [
+/*const products = [
   { name: "Apples_:", country: "Italy", cost: 3, instock: 10 },
   { name: "Oranges:", country: "Spain", cost: 4, instock: 3 },
   { name: "Beans__:", country: "USA", cost: 2, instock: 5 },
   { name: "Cabbage:", country: "USA", cost: 1, instock: 8 },
-];
+];*/
 //=========Cart=============
 const Cart = (props) => {
   const { Card, Accordion, Button } = ReactBootstrap;
@@ -102,23 +102,29 @@ const Products = (props) => {
   const addToCart = (e) => {
     let name = e.target.name;
     let item = items.filter((item) => item.name == name);
+    if (item[0].instock == 0) return;
+    item[0].instock = item[0].instock -1;
     console.log(`add to Cart ${JSON.stringify(item)}`);
     setCart([...cart, ...item]);
-    //doFetch(query);
   };
   const deleteCartItem = (index) => {
     let newCart = cart.filter((item, i) => index != i);
-    setCart(newCart);
+    let newItems = items.map((item, index) => {
+      if (item.name == target[0].name) item.instock + 1;
+      return item;
+    })
+    setCart(newCart)
+    setItems(newItems);
   };
-  const photos = ["apple.png", "orange.png", "beans.png", "cabbage.png"];
+  /*const photos = ["apple.png", "orange.png", "beans.png", "cabbage.png"];*/
 
   let list = items.map((item, index) => {
-    let n = index + 1049;
-    let url = "https://picsum.photos/200/300" + n + "/50/50";
+    let n = index + 2264;
+    let uhit = "https://picsum.photos/200/300" + n + "/50/50";
 
     return (
       <li key={index}>
-        <Image src={photos[index % 4]} width={70} roundedCircle></Image>
+        <Image src={photos[{uhit}]} width={70} roundedCircle></Image>
         <Button variant="primary" size="large">
           {item.name}:{item.cost}
         </Button>
@@ -174,18 +180,18 @@ const Products = (props) => {
 
   return (
     <Container>
-      <h1>React Fruit Cart</h1>
+      <h1>Hukster Veggie Cart</h1>
       <Row>
         <Col>
-          <h1>Product List</h1>
+          <h2>Product List</h2>
           <ul style={{ listStyleType: "none" }}>{list}</ul>
         </Col>
         <Col>
-          <h1>Cart Contents</h1>
+          <h2>Cart Contents</h2>
           <Accordion defaultActiveKey="0">{cartList}</Accordion>
         </Col>
         <Col>
-          <h1>CheckOut </h1>
+          <h2>CheckOut </h2>
           <Button onClick={checkOut}>CheckOut $ {finalList().total}</Button>
           <div> {finalList().total > 0 && finalList().final} </div>
         </Col>
@@ -203,7 +209,7 @@ const Products = (props) => {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
-          <button type="submit">ReStock Products</button>
+          <button className="btn btn primary" type="submit">ReStock Products</button>
         </form>
       </Row>
     </Container>
