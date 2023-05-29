@@ -2,7 +2,7 @@
 
 const Cart = (props) => {
   const { Card, Accordion, Button } = ReactBootstrap;
-  let data = props.location.data ? props.location.data : items;
+  let data = props.location.data ? props.location.data : data;
   console.log(`data:${JSON.stringify(data)}`);
 
   return <Accordion defaultActiveKey="0">{list}</Accordion>;
@@ -101,10 +101,11 @@ const Products = (props) => {
     console.log(`add to Cart ${JSON.stringify(item)}`);
     setCart([...cart, ...item]);
   };
-  const deleteCartItem = (index) => {
-    let newCart = cart.filter((item, i) => index != i);
+  const deleteCartItem = (delIndex) => {
+    let newCart = cart.filter((item, i) => delIndex != i);
+    let target = cart.filter((item, index) => delIndex == index);
     let newItems = items.map((item, index) => {
-      if (item.name == target[0].name) item.instock + 1;
+      if (item.name == target[0].name) item.instock = item.instock + 1;
       return item;
     })
     setCart(newCart)
@@ -113,8 +114,8 @@ const Products = (props) => {
   /*const photos = ["apple.png", "orange.png", "beans.png", "cabbage.png"];*/
 
   let list = items.map((item, index) => {
-    let n = index + 5409;
-    let uhit = "https://picsum.photos/200/300" + n + "/50/50";
+    let n = index + 1049;
+    let uhit = "https://picsum.photos/" + n;
     
       console.log("this is the photos" + uhit)
 
@@ -137,7 +138,7 @@ const Products = (props) => {
       <Accordion.Body>
         $ {item.cost} from {item.country}
       </Accordion.Body>
-      <button className="btn btn-outline-warning" onClick={() => deleteCartItem(index)}
+      <button className="btn btn-outline-warning delete" onClick={() => deleteCartItem(index)}
         eventKey={1 + index}>Delete this item</button>
     </Accordion.Item>
     );

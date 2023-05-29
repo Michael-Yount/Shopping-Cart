@@ -9,4 +9,12 @@ body {
 }
 .listed-item {
     border: 1px solid black;
+    padding: 20px;
+    
+}
+.delete {
+    color: black;
+}
+.btn {
+    background-color: aquamarine;
 }
