@@ -75,7 +75,7 @@ const dataFetchReducer = (state, action) => {
 };
 
 const Products = (props) => {
-  const [items, setItems] = React.useState(data);
+  const [items, setItems] = React.useState([]);
   const [cart, setCart] = React.useState([]);
   const [total, setTotal] = React.useState(0);
   const {
@@ -121,10 +121,10 @@ const Products = (props) => {
   let list = items.map((item, index) => {
     let n = index + 2264;
     let uhit = "https://picsum.photos/200/300" + n + "/50/50";
-
+console.log(uhit)
     return (
       <li key={index}>
-        <Image src={photos[{uhit}]} width={70} roundedCircle></Image>
+        <Image src={photos[{items}]} width={70} roundedCircle></Image>
         <Button variant="primary" size="large">
           {item.name}:{item.cost}
         </Button>
