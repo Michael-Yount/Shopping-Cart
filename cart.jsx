@@ -1,11 +1,5 @@
-// simulate getting products from DataBase
-/*const products = [
-  { name: "Apples_:", country: "Italy", cost: 3, instock: 10 },
-  { name: "Oranges:", country: "Spain", cost: 4, instock: 3 },
-  { name: "Beans__:", country: "USA", cost: 2, instock: 5 },
-  { name: "Cabbage:", country: "USA", cost: 1, instock: 8 },
-];*/
-//=========Cart=============
+
+
 const Cart = (props) => {
   const { Card, Accordion, Button } = ReactBootstrap;
   let data = props.location.data ? props.location.data : items;
@@ -119,13 +113,15 @@ const Products = (props) => {
   /*const photos = ["apple.png", "orange.png", "beans.png", "cabbage.png"];*/
 
   let list = items.map((item, index) => {
-    let n = index + 1049;
+    let n = index + 5409;
     let uhit = "https://picsum.photos/200/300" + n + "/50/50";
-console.log("this is the photos" + uhit)
+    
+      console.log("this is the photos" + uhit)
+
     return (
       <li key={index}>
         <Image src={uhit} width={70} roundedCircle></Image>
-        <Button variant="primary" size="large">
+        <Button className="listed-item">
           {item.name}:{item.cost}
         </Button>
         <input name={item.name} type="submit" onClick={addToCart}></input>
@@ -134,7 +130,7 @@ console.log("this is the photos" + uhit)
   });
   let cartList = cart.map((item, index) => {
     return (
-      <Accordion.Item key={1+index} eventKey={1 + index}>
+      <Accordion.Item key={1+index}>
       <Accordion.Header>
         {item.name}
       </Accordion.Header>

@@ -7,3 +7,6 @@ body {
     background-color: cornflowerblue;
     
 }
+.listed-item {
+    border: 1px solid black;
+}
