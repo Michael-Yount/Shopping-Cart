@@ -119,9 +119,9 @@ const Products = (props) => {
   /*const photos = ["apple.png", "orange.png", "beans.png", "cabbage.png"];*/
 
   let list = items.map((item, index) => {
-    let n = index + 2264;
+    let n = index + 1049;
     let uhit = "https://picsum.photos/200/300" + n + "/50/50";
-console.log(uhit)
+console.log("this is the photos" + uhit)
     return (
       <li key={index}>
         <Image src={uhit} width={70} roundedCircle></Image>
@@ -179,7 +179,7 @@ console.log(uhit)
   };
 
   return (
-    <Container>
+    <Container className="container">
       <h1>Hukster Veggie Cart</h1>
       <Row>
         <Col>

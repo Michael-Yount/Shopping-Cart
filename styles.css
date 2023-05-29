@@ -1,3 +1,9 @@
 body {
+    background-color: rgb(18, 9, 9);
     background-image: url();
+}
+.container {
+    align-items: center;
+    background-color: cornflowerblue;
+    
 }
