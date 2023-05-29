@@ -8,7 +8,7 @@
 //=========Cart=============
 const Cart = (props) => {
   const { Card, Accordion, Button } = ReactBootstrap;
-  let data = props.location.data ? props.location.data : data.data;
+  let data = props.location.data ? props.location.data : items;
   console.log(`data:${JSON.stringify(data)}`);
 
   return <Accordion defaultActiveKey="0">{list}</Accordion>;
