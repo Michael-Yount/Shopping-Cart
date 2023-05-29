@@ -124,7 +124,7 @@ const Products = (props) => {
 console.log(uhit)
     return (
       <li key={index}>
-        <Image src={photos[{items}]} width={70} roundedCircle></Image>
+        <Image src={uhit} width={70} roundedCircle></Image>
         <Button variant="primary" size="large">
           {item.name}:{item.cost}
         </Button>
@@ -169,7 +169,7 @@ console.log(uhit)
   
   const restockProducts = (url) => {
     doFetch(url);
-    console.log(data.data);
+    console.log("this is the url" + data.data);
     let gotData = data.data;
     let addItems = gotData.map((item) => {
       let { name, country, cost, instock } = item.attributes;
